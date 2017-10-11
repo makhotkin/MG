@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MG.Assets.Cards.CardRules">
+    <Position X="8.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAQgAAIAAAAAIAAAAA=</HashCode>
+      <FileName>Cards\CardRules.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MG.Assets.Cards.CardFace">
+    <Position X="11.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAACBAQAAggAAAAA=</HashCode>
+      <FileName>Cards\CardFace.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MG.Assets.Cards.PrintedCard">
+    <Position X="6.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAgAQAAAQAAAAAQIAAAAAAQABAAAA=</HashCode>
+      <FileName>Cards\PrintedCard.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="MG.Assets.Cards.ICardFace">
+    <Position X="11.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAACBAQAAggAAAAA=</HashCode>
+      <FileName>Cards\ICardFace.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Assets.Cards.ICardRules">
+    <Position X="8.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAQgAAIAAAAAIAAAAA=</HashCode>
+      <FileName>Cards\ICardRules.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AltFace" />
+      <Property Name="MainFace" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MG.Assets.Cards.ILocalizedCard">
+    <Position X="3.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAQECAAAAAAQAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Cards\ILocalizedCard.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Prototype" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MG.Assets.Cards.IPaperCard">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAIAAAA=</HashCode>
+      <FileName>Cards\IPaperCard.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Prototype" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MG.Assets.Cards.IPrintedCard">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAQAAAQAAAAAQAAAAAAAQABAAAA=</HashCode>
+      <FileName>Cards\IPrintedCard.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Rules" />
+    </ShowAsAssociation>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

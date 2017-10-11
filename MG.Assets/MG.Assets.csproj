@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2FC01D79-8C9C-4705-9BE2-248091071476}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MG.Assets</RootNamespace>
+    <AssemblyName>MG.Assets</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cards\CardFace.cs" />
+    <Compile Include="Cards\CardRules.cs" />
+    <Compile Include="Cards\ICardFace.cs" />
+    <Compile Include="Cards\ICardRules.cs" />
+    <Compile Include="Cards\ILocalizedCard.cs" />
+    <Compile Include="Cards\IPaperCard.cs" />
+    <Compile Include="Cards\IPrintedCard.cs" />
+    <Compile Include="Cards\PrintedCard.cs" />
+    <Compile Include="Cards\Properties\CardRarity.cs" />
+    <Compile Include="Cards\Properties\Types\CardFullType.cs" />
+    <Compile Include="Cards\Properties\Types\CardSuperType.cs" />
+    <Compile Include="Cards\Properties\Types\CardType.cs" />
+    <Compile Include="Cards\Properties\Color.cs" />
+    <Compile Include="Editions\CardEdition.cs" />
+    <Compile Include="Storages\Adapters\CardDataAdapter.cs" />
+    <Compile Include="Storages\Adapters\ICardDataAdapter.cs" />
+    <Compile Include="Storages\Adapters\MtgJsonDotCom\MtgjsonDotComAdapter.cs" />
+    <Compile Include="Storages\Adapters\MtgJsonDotCom\MtgJsonSetReader.cs" />
+    <Compile Include="Storages\CardDatabase.cs" />
+    <Compile Include="Storages\ICardDatabase.cs" />
+    <Compile Include="Decks\Deck.cs" />
+    <Compile Include="Decks\DeckSection.cs" />
+    <Compile Include="Decks\GameFormat.cs" />
+    <Compile Include="Decks\IDeck.cs" />
+    <Compile Include="Decks\Validation\DeckValidator.cs" />
+    <Compile Include="Editions\BorderColor.cs" />
+    <Compile Include="Editions\CardLanguage.cs" />
+    <Compile Include="Editions\EditionType.cs" />
+    <Compile Include="Editions\FoilingMethod.cs" />
+    <Compile Include="Editions\ICardEdition.cs" />
+    <Compile Include="Cards\Properties\ManaCost\ManaCost.cs" />
+    <Compile Include="Cards\Properties\ManaCost\ManaCostAtom.cs" />
+    <Compile Include="Cards\Properties\ManaCost\ManaCostShards.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Cards\Properties\SplitType.cs" />
+    <Compile Include="Utils\MultiMap.cs" />
+    <Compile Include="Utils\RulesReferenceAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Cards\_Diagrams\Cards.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
