@@ -12,6 +12,7 @@ namespace MG.Assets.Cards.Properties
 		Uncommon,
 		Rare,
 		MythicRare,
-		Special,
+		Timeshifted,
+		Masterpiece,
 	}
 }

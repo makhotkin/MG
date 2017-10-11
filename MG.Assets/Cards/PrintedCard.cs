@@ -7,16 +7,12 @@ namespace MG.Assets.Cards
 	public class PrintedCard : IPrintedCard
 	{
 		public string Name { get; set; }
-
 		public ICardRules Rules { get; set; }
-
 		public ICardEdition Edition { get; set; }
-
 		public CardRarity Rarity { get; set; }
-
 		public string CollectorsNumber { get; set; }
-
 		public string WaterMark { get; set; }
+		public string Artist { get; set; }
 
 		// override object.Equals
 		public override bool Equals(object obj)

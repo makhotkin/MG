@@ -15,5 +15,7 @@ namespace MG.Assets.Database
 
 		IPrintedCard CardByName(string name, string code = null);
 		IPrintedCard CardByName(string name, ICardEdition edition, int index = -1);
+
+		ICardRules RulesByName(string name);
 	}
 }

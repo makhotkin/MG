@@ -2,6 +2,7 @@
 {
 	public enum SplitType
 	{
+		None = 0,
 		Flip,
 		Split,
 		DoubleFaced

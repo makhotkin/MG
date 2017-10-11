@@ -12,12 +12,5 @@ namespace MG.Game.Tests
 		{
 			Assert.IsTrue(true);
 		}
-
-
-		[TestMethod]
-		public void CanCreateGameInstance()
-		{
-			Assert.Fail();
-		}
 	}
 }

@@ -1,4 +1,6 @@
-﻿namespace MG.Assets.Editions
+﻿using System;
+
+namespace MG.Assets.Editions
 {
 	public class CardEdition : ICardEdition
 	{
@@ -6,6 +8,7 @@
 		public string Name { get; set; }
 		public EditionType Type { get; set; }
 		public BorderColor Border { get; set; }
+		public DateTime ReleaseDate { get; set; }
 	}
 }
 

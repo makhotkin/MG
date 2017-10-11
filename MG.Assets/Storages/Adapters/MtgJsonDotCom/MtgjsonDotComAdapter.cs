@@ -37,7 +37,7 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 				string fileName = FileNames[ixFile];
 				if (!shouldReadFile(fileName))
 					continue;
-				(ICardEdition currentEdition, IEnumerable<IPrintedCard> currentCards) = readFile(fileName);
+				(currentEdition, currentCards) = readFile(fileName);
 				return true;
 			}
 			return false;
@@ -50,7 +50,7 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 
 		private (ICardEdition, IEnumerable<IPrintedCard>) readFile(string fileName)
 		{
-			var reader = new MtgJsonSetReader(fileName);
+			var reader = new MtgJsonSetReader(fileName, ExistingRules);
 			return (reader.Edition, reader.Cards);
 		}
 

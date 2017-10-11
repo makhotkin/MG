@@ -8,11 +8,10 @@ namespace MG.Assets.Cards
 		public ICardFace MainFace { get; set; }
 		public ICardFace AltFace { get; set; }
 
-		public Color ColorIdentity { get { 
-			return MainFace.Color;
-		}}
+		public Color ColorIdentity { get; set; }
 
 		public int ConvertedManaCost { get {
+				// to be improved for split cards
 			return MainFace.ManaCost.ConvertedManaCost;
 		}}
 	}

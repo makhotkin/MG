@@ -12,6 +12,8 @@ namespace MG.Assets.Storages.Adapters
 
 	public abstract class CardDataAdapter : ICardDataAdapter
 	{
+		protected IDictionary<string, ICardRules> ExistingRules;
+
 		public abstract IEnumerable<IPrintedCard> CurrentCards { get; }
 		public abstract ICardEdition Current { get; }
 

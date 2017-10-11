@@ -1,11 +1,14 @@
-﻿namespace MG.Assets.Editions
+﻿using System;
+
+namespace MG.Assets.Editions
 {
 	public interface ICardEdition
 	{
-		string Code { get; set; }
-		string Name { get; set; }
-		EditionType Type { get; set; }
-		BorderColor Border { get; set; }
+		string Code { get; }
+		string Name { get; }
+		EditionType Type { get; }
+		BorderColor Border { get; }
+		DateTime ReleaseDate { get; }
 	}
 }
 

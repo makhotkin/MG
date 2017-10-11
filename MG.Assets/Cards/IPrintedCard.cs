@@ -12,6 +12,7 @@ namespace MG.Assets.Cards
 		CardRarity Rarity { get; }
 		string CollectorsNumber { get; }	// cannot bear with plain int here, for some cards have letters 
 		string WaterMark { get; }			// Such as Guild, Mirran or Phyrexian mark
+		string Artist { get; }
 		
 	}
 }
