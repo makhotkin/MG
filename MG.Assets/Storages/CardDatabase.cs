@@ -5,6 +5,7 @@ using MG.Assets.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace MG.Assets.Database
 {
@@ -13,7 +14,7 @@ namespace MG.Assets.Database
 		Random selectVariant = new Random();
 		IDictionary<string, ICardEdition> EditionByCode = new Dictionary<string, ICardEdition>(StringComparer.OrdinalIgnoreCase);
 		IDictionary<string, ICardRules> CardRulesByName = new Dictionary<string, ICardRules>(StringComparer.OrdinalIgnoreCase);
-		IDictionary<string, IPrintedCard> NewestCardsByName = new Dictionary<string, IPrintedCard>(StringComparer.OrdinalIgnoreCase);
+		MultiMap<string, ICardEdition> CardPrintingsByName = new MultiMap<string, ICardEdition>(StringComparer.OrdinalIgnoreCase);
 		IDictionary<ICardEdition, MultiMap<string, IPrintedCard>> CardsInEdition = new Dictionary<ICardEdition, MultiMap<string, IPrintedCard>>();
 		public IEnumerable<ICardEdition> Editions => EditionByCode.Values;
 
@@ -21,9 +22,9 @@ namespace MG.Assets.Database
 
 		public IPrintedCard CardByName(string name, string code = null)
 		{
-			if(code != null)
-				return CardByName(name, GetEditionByCode(code));
-			return NewestCardsByName.TryGetValue(name, out IPrintedCard card) ? card : null;
+			ICardEdition edition = code == null ? GetLatestEditionForCard(name) : GetEditionByCode(code);
+			return CardByName(name, edition);
+			
 		}
 
 		public IPrintedCard CardByName(string name, ICardEdition edition, int index = -1)
@@ -42,11 +43,7 @@ namespace MG.Assets.Database
 
 		public IEnumerable<IPrintedCard> CardsByName(string name, int amount, string code = null)
 		{
-			ICardEdition edition = null;
-			if (code != null)
-				edition = GetEditionByCode(code);
-			else if (NewestCardsByName.TryGetValue(name, out IPrintedCard card))
-				edition = card.Edition;
+			ICardEdition edition = code == null ? GetLatestEditionForCard(name) : GetEditionByCode(code);
 
 			if (null == edition || !CardsInEdition[edition].TryGetValue(name, out List<IPrintedCard> list))
 				throw new KeyNotFoundException("Card not found in database: " + name + " | " + code);
@@ -63,8 +60,21 @@ namespace MG.Assets.Database
 			return edition == null || CardsInEdition.TryGetValue(edition, out MultiMap<string, IPrintedCard> cards) ? Enumerable.Empty<IPrintedCard>() : cards.ManyValues;
 		}
 
-		public ICardEdition GetEditionByCode(string code) => EditionByCode.TryGetValue(code, out ICardEdition res) ? res : null;
 
+		public ICardEdition GetEditionByCode(string code) => EditionByCode.TryGetValue(code, out ICardEdition res) ? res : null;
+		public ICardEdition GetEarliestEditionOfCard(string name)
+		{
+			return CardPrintingsByName.TryGetValue(name, out List<ICardEdition> list) ? list.First() : null;
+		}
+
+		public ICardEdition GetLatestEditionForCard(string name, ICardEdition latestAllowedEdition = null)
+		{
+			if (!CardPrintingsByName.TryGetValue(name, out List<ICardEdition> list))
+				return null;
+			return latestAllowedEdition == null ? list.Last() : list.Last(l => l.CompareTo(latestAllowedEdition) <= 0);
+		}
+
+		[MethodImpl(MethodImplOptions.Synchronized)]
 		public ICardDatabase Populate(ICardDataAdapter source)
 		{
 			while (source.MoveNext())
@@ -75,7 +85,10 @@ namespace MG.Assets.Database
 				CardsInEdition.Add(ed, multiMap);
 				foreach (var c in source.CurrentCards)
 				{
-					NewestCardsByName[c.Name] = c;
+					if (!CardPrintingsByName.TryGetValue(c.Name, out List<ICardEdition> editions))
+						CardPrintingsByName.Add(c.Name, c.Edition);
+					else if (editions.Count == 0 || !editions[editions.Count - 1].Equals(c.Edition))
+						editions.Add(c.Edition);
 					multiMap.Add(c.Name, c);
 				}
 			}
@@ -84,6 +97,5 @@ namespace MG.Assets.Database
 
 			return this;
 		}
-
 	}
 }

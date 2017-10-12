@@ -2,7 +2,7 @@
 
 namespace MG.Assets.Editions
 {
-	public interface ICardEdition
+	public interface ICardEdition : IComparable<ICardEdition>
 	{
 		string Code { get; }
 		string Name { get; }

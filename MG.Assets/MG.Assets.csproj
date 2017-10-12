@@ -56,6 +56,10 @@
     <Compile Include="Cards\Properties\Types\CardType.cs" />
     <Compile Include="Cards\Properties\Types\CoreType.cs" />
     <Compile Include="Cards\Properties\Types\SuperType.cs" />
+    <Compile Include="Decks\Serialization\DeckReaderBase.cs" />
+    <Compile Include="Decks\Serialization\DeckReaderGatherer.cs" />
+    <Compile Include="Decks\Serialization\IDeckReader.cs" />
+    <Compile Include="Decks\Transformation\IDeckTransformer.cs" />
     <Compile Include="Editions\CardEdition.cs" />
     <Compile Include="Storages\Adapters\CardDataAdapter.cs" />
     <Compile Include="Storages\Adapters\ICardDataAdapter.cs" />

@@ -7,7 +7,7 @@ namespace MG.Assets.Decks
 	{
 		string Name { get; }
 		IList<IPrintedCard> this[DeckSection s] { get; }
-		IList<IPrintedCard> EnsureSection(DeckSection s);
+		IEnumerable<DeckSection> Sections { get; }
 	}
 }
 

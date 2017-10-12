@@ -9,17 +9,16 @@ namespace MG.Assets.Decks
 	public class Deck : IDeck
 	{
 		private static readonly IReadOnlyList<IPrintedCard> EmptySection = new List<IPrintedCard>().AsReadOnly();
-		MultiMap<DeckSection, IPrintedCard> Sections = new MultiMap<DeckSection, IPrintedCard>();
-		public IList<IPrintedCard> this[DeckSection s] {
-			get { return Sections.TryGetValue(s, out List<IPrintedCard> list) ? list : null; }
-		}
-
+		private MultiMap<DeckSection, IPrintedCard> sections = new MultiMap<DeckSection, IPrintedCard>();
+		public IList<IPrintedCard> this[DeckSection s] => sections.TryGetValue(s, out List<IPrintedCard> list) ? list : null;
 		public string Name { get; set; }
+
+		IEnumerable<DeckSection> IDeck.Sections => sections.Keys;
 
 		public IList<IPrintedCard> EnsureSection(DeckSection s)
 		{
-			if (!Sections.TryGetValue(s, out List<IPrintedCard> container))
-				Sections.Add(s, container = new List<IPrintedCard>());
+			if (!sections.TryGetValue(s, out List<IPrintedCard> container))
+				sections.Add(s, container = new List<IPrintedCard>());
 			return container;
 		}
 	}

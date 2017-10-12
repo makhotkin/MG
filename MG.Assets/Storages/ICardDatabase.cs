@@ -9,6 +9,8 @@ namespace MG.Assets.Database
 		IEnumerable<ICardEdition> Editions { get; }
 
 		ICardEdition GetEditionByCode(string code);
+		ICardEdition GetEarliestEditionOfCard(string name);
+		ICardEdition GetLatestEditionForCard(string name, ICardEdition latestAllowedEdition = null);
 
 		IEnumerable<IPrintedCard> CardsByEdition(string code);
 		IEnumerable<IPrintedCard> CardsByEdition(ICardEdition edition);
