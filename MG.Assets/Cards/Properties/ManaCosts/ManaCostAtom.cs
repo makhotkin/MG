@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MG.Assets.Cards.Properties.ManaCost
+namespace MG.Assets.Cards.Properties.ManaCosts
 {
 	[Flags]
 	public enum ManaCostAtom : short

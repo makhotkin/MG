@@ -1,7 +1,7 @@
 ﻿
 
 using MG.Assets.Cards.Properties;
-using MG.Assets.Cards.Properties.ManaCost;
+using MG.Assets.Cards.Properties.ManaCosts;
 using MG.Assets.Cards.Properties.Types;
 using System.Collections.Generic;
 

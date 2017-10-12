@@ -9,6 +9,7 @@ namespace MG.Assets.Editions
 		EditionType Type { get; }
 		BorderColor Border { get; }
 		DateTime ReleaseDate { get; }
+		int NominalCardCount { get; }
 	}
 }
 

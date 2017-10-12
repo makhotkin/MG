@@ -1,6 +1,7 @@
 ﻿using MG.Assets.Cards.Properties;
 using MG.Assets.Editions;
 using System.Collections.Generic;
+using System.Text;
 
 namespace MG.Assets.Cards
 {
@@ -31,6 +32,11 @@ namespace MG.Assets.Cards
 			hashCode = hashCode * -1521134295 + EqualityComparer<ICardEdition>.Default.GetHashCode(Edition);
 			hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CollectorsNumber);
 			return hashCode;
+		}
+
+		public override string ToString()
+		{
+			return $"{Name} | {Edition.Code} | {Rarity} | {CollectorsNumber}/{Edition.NominalCardCount}";
 		}
 	}
 }

@@ -74,9 +74,9 @@
     <Compile Include="Editions\EditionType.cs" />
     <Compile Include="Editions\FoilingMethod.cs" />
     <Compile Include="Editions\ICardEdition.cs" />
-    <Compile Include="Cards\Properties\ManaCost\ManaCost.cs" />
-    <Compile Include="Cards\Properties\ManaCost\ManaCostAtom.cs" />
-    <Compile Include="Cards\Properties\ManaCost\ManaCostShards.cs" />
+    <Compile Include="Cards\Properties\ManaCosts\ManaCost.cs" />
+    <Compile Include="Cards\Properties\ManaCosts\ManaCostAtom.cs" />
+    <Compile Include="Cards\Properties\ManaCosts\ManaCostShards.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cards\Properties\SplitType.cs" />
     <Compile Include="Utils\MultiMap.cs" />

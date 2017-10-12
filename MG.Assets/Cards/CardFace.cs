@@ -1,5 +1,5 @@
 ﻿using MG.Assets.Cards.Properties;
-using MG.Assets.Cards.Properties.ManaCost;
+using MG.Assets.Cards.Properties.ManaCosts;
 using MG.Assets.Cards.Properties.Types;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ namespace MG.Assets.Cards
 		{
 			this.name = name;
 			this.oracleText = oracleText;
+			ManaCost = ManaCost.NoCost;
 		}
 
 		public string Name => name;

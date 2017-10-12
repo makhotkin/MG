@@ -5,6 +5,7 @@ using System.Configuration;
 using System.IO;
 using System.Collections.Generic;
 using MG.Assets.Cards;
+using System.Linq;
 
 namespace MG.Assets.Tests
 {
@@ -23,9 +24,13 @@ namespace MG.Assets.Tests
 			Dictionary<string, ICardRules> rules = new Dictionary<string, ICardRules>();
 			var instance = new MtgJsonSetReader(GetPathForEdition("M10"), rules);
 
+			var cards = instance.Cards.ToArray();
+
 			Assert.AreEqual("Magic 2010", instance.Edition.Name);
 			Assert.AreEqual("M10", instance.Edition.Code);
 			Assert.AreEqual(Editions.EditionType.Core, instance.Edition.Type);
+
+			Assert.AreEqual(249, cards.Length);
 		}
 
 		[TestMethod]

@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using System.IO;
 using Newtonsoft.Json;
 using MG.Assets.Cards.Properties;
+using MG.Assets.Cards.Properties.ManaCosts;
 
 namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 {
@@ -33,6 +34,8 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 					card.Edition = edition;
 					cards.Add(card);
 				}
+
+				edition.NominalCardCount = cards.Count;
 			}
 		}
 
@@ -73,6 +76,8 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 				rules = jText.Value<string>().Split(rulesSeparators, StringSplitOptions.None);
 			CardFace face = new CardFace(name, rules);
 
+			if (c.TryGetValue("manaCost", out JToken jManaCost))
+				face.ManaCost = ManaCost.Parse(jManaCost.Value<string>());
 			return face;
 		}
 
