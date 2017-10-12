@@ -34,8 +34,8 @@ namespace MG.Game.Players
 				zones.Add(ZoneType.Library, fnMaterializeCard(cp, this));
 			}
 
-			var commander = deck[DeckSection.Commander].FirstOrDefault();
-			if (default(IPrintedCard) != commander)
+			var sCom = deck[DeckSection.Commander];
+			if (sCom != null)
 			{
 				throw new NotImplementedException("103.1b In a Commander game, each player puts his or her commander from his or her deck face up into the command zone before shuffling. See rule 903.6.");
 			}

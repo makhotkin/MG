@@ -14,5 +14,10 @@ namespace MG.Assets.Cards
 				// to be improved for split cards
 			return MainFace.ManaCost.ConvertedManaCost;
 		}}
+
+		public override string ToString()
+		{
+			return AltFace == null ? MainFace.ToString() : $"{MainFace.ToString()} // {AltFace.ToString()}";
+		}
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using MG.Assets.Cards;
-using MG.Assets.Decks;
 using MG.Game.Cards;
 using MG.Game.Events;
 using MG.Game.Players;
@@ -8,14 +7,7 @@ using System.Collections.Generic;
 
 namespace MG.Game.State
 {
-	public class GameToBeStarted
-	{
-		public readonly List<PlayerToBeginGameWith> Players = new List<PlayerToBeginGameWith>();
-		public GameFormat Format;
-		public GameRulesAmmendments RuleChanges;
-	}
-
-	public class Game : IGame
+	public class GameState : IGame
 	{
 		public TurnTime CurrentTime => currentTime;
 		private TurnTime currentTime;
@@ -31,7 +23,7 @@ namespace MG.Game.State
 		}
 
 
-		public Game(GameToBeStarted builder)
+		public GameState(GameToBeStarted builder)
 		{
 			this.rules = builder.RuleChanges;
 			foreach (var p in builder.Players)

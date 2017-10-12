@@ -69,13 +69,14 @@
     <Compile Include="Events\IEventPredicate.cs" />
     <Compile Include="Events\IEventToApply.cs" />
     <Compile Include="Cards\ICard.cs" />
-    <Compile Include="State\Game.cs" />
     <Compile Include="State\GameRulesAmmendments.cs" />
     <Compile Include="IPermanent.cs" />
     <Compile Include="ISpell.cs" />
     <Compile Include="Players\IPlayer.cs" />
     <Compile Include="Players\Player.cs" />
     <Compile Include="Players\PlayerId.cs" />
+    <Compile Include="State\GameState.cs" />
+    <Compile Include="State\GameToBeStarted.cs" />
     <Compile Include="State\IGame.cs" />
     <Compile Include="State\PlayerToBeginGameWith.cs" />
     <Compile Include="Turns\PhaseType.cs" />
@@ -96,9 +97,6 @@
       <Name>MG.Assets</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="InGame\" />
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

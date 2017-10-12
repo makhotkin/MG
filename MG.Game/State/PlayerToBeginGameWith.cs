@@ -7,6 +7,6 @@ namespace MG.Game.State
 	{
 		public PlayerId Id;
 		public string Name;
-		public Deck Deck;
+		public IDeck Deck;
 	}
 }
