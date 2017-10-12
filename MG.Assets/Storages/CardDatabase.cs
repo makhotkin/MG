@@ -40,6 +40,22 @@ namespace MG.Assets.Database
 			return list[index];
 		}
 
+		public IEnumerable<IPrintedCard> CardsByName(string name, int amount, string code = null)
+		{
+			ICardEdition edition = null;
+			if (code != null)
+				edition = GetEditionByCode(code);
+			else if (NewestCardsByName.TryGetValue(name, out IPrintedCard card))
+				edition = card.Edition;
+
+			if (null == edition || !CardsInEdition[edition].TryGetValue(name, out List<IPrintedCard> list))
+				throw new KeyNotFoundException("Card not found in database: " + name + " | " + code);
+			int len = list.Count;
+			for (int i = 0; i < amount; i++)
+				yield return list[selectVariant.Next(len)];
+		}
+
+
 		public IEnumerable<IPrintedCard> CardsByEdition(string code) => CardsByEdition(GetEditionByCode(code));
 
 		public IEnumerable<IPrintedCard> CardsByEdition(ICardEdition edition)
@@ -49,8 +65,7 @@ namespace MG.Assets.Database
 
 		public ICardEdition GetEditionByCode(string code) => EditionByCode.TryGetValue(code, out ICardEdition res) ? res : null;
 
-
-		public void Populate(ICardDataAdapter source)
+		public ICardDatabase Populate(ICardDataAdapter source)
 		{
 			while (source.MoveNext())
 			{
@@ -64,6 +79,11 @@ namespace MG.Assets.Database
 					multiMap.Add(c.Name, c);
 				}
 			}
+
+			// CardRulesByName = source.RulesByName
+
+			return this;
 		}
+
 	}
 }

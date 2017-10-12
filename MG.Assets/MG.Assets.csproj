@@ -48,7 +48,6 @@
     <Compile Include="Cards\CardRules.cs" />
     <Compile Include="Cards\ICardFace.cs" />
     <Compile Include="Cards\ICardRules.cs" />
-    <Compile Include="Cards\ILocalizedCard.cs" />
     <Compile Include="Cards\IPaperCard.cs" />
     <Compile Include="Cards\IPrintedCard.cs" />
     <Compile Include="Cards\PrintedCard.cs" />

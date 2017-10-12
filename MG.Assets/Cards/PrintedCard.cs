@@ -19,10 +19,8 @@ namespace MG.Assets.Cards
 		public override bool Equals(object obj)
 		{
 			PrintedCard pc = obj as PrintedCard;
-			if (pc == null)
-				return false;
 
-			return pc.Name.Equals(this.Name) && pc.Edition.Equals(this.Edition) && pc.CollectorsNumber.Equals(this.CollectorsNumber);
+			return pc != null && pc.Name.Equals(this.Name) && pc.Edition.Equals(this.Edition) && pc.CollectorsNumber.Equals(this.CollectorsNumber);
 		}
 
 		public override int GetHashCode()

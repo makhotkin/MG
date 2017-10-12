@@ -11,7 +11,7 @@
   <Class Name="MG.Assets.Cards.CardFace">
     <Position X="11.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAACBAQAAggAAAAA=</HashCode>
+      <HashCode>AAAAgAAAAAEAgAAAAAAAAAQAAAAEAACBAQAAggAAAAA=</HashCode>
       <FileName>Cards\CardFace.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -19,7 +19,7 @@
   <Class Name="MG.Assets.Cards.PrintedCard">
     <Position X="6.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAAAAgAQAAAQAAAAAQIAAAAAAQABAAAA=</HashCode>
+      <HashCode>AgAAAAAAAAAAAAAEgAQAAAQAAIAAQIAAAAAAQABAAAA=</HashCode>
       <FileName>Cards\PrintedCard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -27,7 +27,7 @@
   <Interface Name="MG.Assets.Cards.ICardFace">
     <Position X="11.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAACBAQAAggAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAEAgAAAAAAAAAQAAAAAAACBAQAAggAAAAA=</HashCode>
       <FileName>Cards\ICardFace.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -38,24 +38,14 @@
       <FileName>Cards\ICardRules.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="AltFace" />
       <Property Name="MainFace" />
-    </ShowAsAssociation>
-  </Interface>
-  <Interface Name="MG.Assets.Cards.ILocalizedCard">
-    <Position X="3.5" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAAAAAQECAAAAAAQAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>Cards\ILocalizedCard.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Prototype" />
+      <Property Name="AltFace" />
     </ShowAsAssociation>
   </Interface>
   <Interface Name="MG.Assets.Cards.IPaperCard">
-    <Position X="0.75" Y="0.75" Width="1.5" />
+    <Position X="3.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAIAAAA=</HashCode>
+      <HashCode>QAAAAAAECAAAAAAAAAAAAAQAAAAAAAAAAQAAAAIAAAA=</HashCode>
       <FileName>Cards\IPaperCard.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -65,7 +55,7 @@
   <Interface Name="MG.Assets.Cards.IPrintedCard">
     <Position X="6.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAAAAAAQAAAQAAAAAQAAAAAAAQABAAAA=</HashCode>
+      <HashCode>AgAAAAAAAAAAAAAAAAQAAAQAAIAAQAAAAAAAQABAAAA=</HashCode>
       <FileName>Cards\IPrintedCard.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

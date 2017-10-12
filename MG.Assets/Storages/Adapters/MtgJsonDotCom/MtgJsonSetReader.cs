@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using MG.Assets.Cards.Properties;
 using MG.Assets.Cards.Properties.ManaCosts;
 using MG.Assets.Cards.Properties.Types;
+using System.Linq;
 
 namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 {
@@ -32,6 +33,8 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 				foreach(JObject c in jcards)
 				{
 					PrintedCard card = ReadPrinting(c, existingRules);
+					if (null == card) // second face
+						continue;
 					card.Edition = edition;
 					cards.Add(card);
 				}
@@ -44,30 +47,41 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 		{
 			PrintedCard card = new PrintedCard();
 			card.Name = c["name"].Value<string>();
+			card.Artist = c["artist"].Value<string>();
+			var splitType = parseSplitType(c["layout"].Value<string>());
+			string[] names = null;
+			if (c.TryGetValue("names", out JToken jNames))
+				names = jNames.Values<string>().ToArray();
 			card.Rarity =  ParseRarity(c["rarity"].Value<string>());
 			card.CollectorsNumber = c["number"].Value<string>();
-			card.Artist = c["artist"].Value<string>();
+			if (splitType == SplitType.DoubleFaced && card.CollectorsNumber.EndsWith("a"))
+				card.CollectorsNumber = card.CollectorsNumber.TrimEnd('a');
 
-			if (!existingRules.TryGetValue(card.Name, out ICardRules rules))
-				existingRules.Add(card.Name, rules = ReadRules(card.Name, c));
+			string cardNameForLookup = names == null ? card.Name : getCardNameForLookup(names, splitType);
+			if (!existingRules.TryGetValue(cardNameForLookup, out ICardRules rules))
+				existingRules.Add(cardNameForLookup, rules = ReadRules(card.Name, c));
+			else if(names != null && card.Name.Equals(names[1]) ) {
+				rules.AltFace = ReadCardFace(card.Name, c);
+				return null;
+			}
+			rules.SplitType = splitType;
 			card.Rules = rules;
 			return card;
+		}
+
+		private static string getCardNameForLookup(string[] names, SplitType splitType)
+		{
+			if (splitType == SplitType.DoubleFaced)
+				return names[0];
+			throw new NotImplementedException();
 		}
 
 		private static CardRules ReadRules(string name, JObject c)
 		{
 			CardRules rules = new CardRules();
-			rules.SplitType = parseSplitType(c["layout"].Value<string>());
 			if(c.TryGetValue("colorIdentity", out JToken jt))
 				rules.ColorIdentity = parseColorIdentity(jt.Values<string>());
-			if (rules.SplitType == SplitType.None)
-				rules.MainFace = ReadCardFace(name, c);
-			else if (rules.SplitType == SplitType.DoubleFaced)
-			{
-				throw new NotImplementedException("Reading 2-faced cards");
-			}
-			else
-				throw new NotImplementedException("Reading split cards");
+			rules.MainFace = ReadCardFace(name, c);
 			return rules;
 		}
 
@@ -137,11 +151,11 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 
 		private static SplitType parseSplitType(string layout)
 		{
-			if ("normal".Equals(layout))
+			if ("normal".Equals(layout) || "leveler".Equals(layout))
 				return SplitType.None;
 			if ("double-faced".Equals(layout))
 				return SplitType.DoubleFaced;
-			throw new NotImplementedException("Parse split cards layout");
+			throw new NotImplementedException("Parse cards with layout: " + layout);
 		}
 
 		private static CardRarity ParseRarity(string rarity)

@@ -11,6 +11,7 @@ namespace MG.Assets.Tests.Cards.Properties.ManaCosts
 		public void ManaCost_NoCost()
 		{
 			ManaCost mc = ManaCost.Parse("");
+			Assert.IsTrue(mc.HasNoCost);
 			Assert.AreEqual("(no cost)", mc.ToString());
 		}
 
@@ -36,7 +37,7 @@ namespace MG.Assets.Tests.Cards.Properties.ManaCosts
 		public void ManaCost_GenericTen()
 		{
 			ManaCost mc = ManaCost.Parse("10");
-
+			Assert.IsFalse(mc.HasNoCost);
 			Assert.AreEqual(mc.ConvertedManaCost, 10);
 			Assert.AreEqual("{10}", mc.ToString(true));
 		}
@@ -57,15 +58,6 @@ namespace MG.Assets.Tests.Cards.Properties.ManaCosts
 
 			Assert.AreEqual(mc.ConvertedManaCost, 2);
 			Assert.AreEqual("XUU", mc.ToString());
-		}
-
-		[TestMethod]
-		public void ManaCost_Phyrexian() // Porcelain Legionnaire
-		{
-			ManaCost mc = ManaCost.Parse("2{WP}");
-
-			Assert.AreEqual(mc.ConvertedManaCost, 3);
-			Assert.AreEqual("{2}{P/W}", mc.ToString(true));
 		}
 
 		[TestMethod]

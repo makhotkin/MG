@@ -10,20 +10,16 @@ namespace MG.Assets.Utils
 	{
 		public MultiMap() : base() { }
 		public MultiMap(IEqualityComparer<TKey> valueComparer) : base(valueComparer) { }
-		private static readonly IEnumerable<TValue> EmptyList = new List<TValue>(0).AsReadOnly();
+		private static readonly IList<TValue> EmptyList = new List<TValue>(0).AsReadOnly();
 
 		public void Add(TKey key, TValue value)
 		{
-			List<TValue> container = null;
-			if (!this.TryGetValue(key, out container))
-			{
-				container = new List<TValue>();
-				base.Add(key, container);
-			}
+			if (!this.TryGetValue(key, out List<TValue> container))
+				base.Add(key, container = new List<TValue>());
 			container.Add(value);
 		}
 
-		internal IEnumerable<TValue> TryGetValueOrEmptyEnumerable(TKey key)
+		internal IList<TValue> TryGetValueOrEmptyList(TKey key)
 		{
 			return TryGetValue(key, out List<TValue> list) ? list : EmptyList;
 		}

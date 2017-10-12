@@ -3,6 +3,7 @@ using MG.Assets.Cards;
 using MG.Assets.Editions;
 using System.Linq;
 using System;
+using System.IO;
 
 namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 {
@@ -14,6 +15,12 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 		public MtgJsonDotComAdapter(string folder)
 		{
 			FileNames = System.IO.Directory.EnumerateFiles(folder, "*.json").ToArray();
+			Reset();
+		}
+
+		public MtgJsonDotComAdapter(string folder, params string[] editionCodes)
+		{
+			FileNames = editionCodes.Select(e => Path.Combine(folder, e + "-x.json")).ToArray();
 			Reset();
 		}
 

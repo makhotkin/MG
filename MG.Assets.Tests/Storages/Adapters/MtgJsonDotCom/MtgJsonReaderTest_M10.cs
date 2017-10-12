@@ -69,6 +69,7 @@ namespace MG.Assets.Tests
 			Assert.AreEqual(CardRarity.Uncommon, printing.Rarity);
 			Assert.AreEqual("M10", printing.Edition.Code);
 			Assert.IsNull(printing.WaterMark);
+			Assert.IsNull(rules.AltFace);
 			Assert.AreEqual("219", printing.CollectorsNumber);
 
 			Assert.AreEqual("Rod of Ruin", face.Name);
@@ -92,6 +93,7 @@ namespace MG.Assets.Tests
 			Assert.AreEqual(CardRarity.MythicRare, printing.Rarity);
 			Assert.AreEqual("M10", printing.Edition.Code);
 			Assert.IsNull(printing.WaterMark);
+			Assert.IsNull(rules.AltFace);
 			Assert.AreEqual("200", printing.CollectorsNumber);
 
 			Assert.AreEqual(Color.Green, rules.ColorIdentity);

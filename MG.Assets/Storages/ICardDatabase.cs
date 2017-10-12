@@ -14,6 +14,7 @@ namespace MG.Assets.Database
 		IEnumerable<IPrintedCard> CardsByEdition(ICardEdition edition);
 
 		IPrintedCard CardByName(string name, string code = null);
+		IEnumerable<IPrintedCard> CardsByName(string name, int amount, string code = null);
 		IPrintedCard CardByName(string name, ICardEdition edition, int index = -1);
 
 		ICardRules RulesByName(string name);
