@@ -5,7 +5,7 @@ using MG.Assets.Cards.Properties.ManaCosts;
 namespace MG.Assets.Tests.Cards.Properties.ManaCosts
 {
 	[TestClass]
-	public class TestManaCost
+	public class ManaCostTests
 	{
 		[TestMethod]
 		public void ManaCost_NoCost()

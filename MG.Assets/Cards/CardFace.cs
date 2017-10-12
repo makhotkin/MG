@@ -17,11 +17,15 @@ namespace MG.Assets.Cards
 		}
 
 		public string Name => name;
-		public CardFullType Type { get; set; }
+		public CardType Type { get; set; }
 		public Color Color { get; set; }
 		public ManaCost ManaCost { get; set; }
+
 		private readonly String[] oracleText;
 		public IEnumerable<string> OracleText => oracleText;
-		public string PowerToughnessLoyalty { get; set; }
+
+		public string Power { get; set; }
+		public string Toughness { get; set; }
+		public string Loyalty { get; set; }
 	}
 }

@@ -9,11 +9,13 @@ namespace MG.Assets.Cards
 {
 	public interface ICardFace
 	{
-		CardFullType Type { get; }
+		CardType Type { get; }
 		Color Color { get; }
 		string Name { get; }
 		ManaCost ManaCost { get; }
 		IEnumerable<string> OracleText { get; }
-		string PowerToughnessLoyalty { get; }
+		string Power { get; }
+		string Toughness { get; }
+		string Loyalty { get; }
 	}
 }

@@ -53,10 +53,10 @@
     <Compile Include="Cards\IPrintedCard.cs" />
     <Compile Include="Cards\PrintedCard.cs" />
     <Compile Include="Cards\Properties\CardRarity.cs" />
-    <Compile Include="Cards\Properties\Types\CardFullType.cs" />
-    <Compile Include="Cards\Properties\Types\CardSuperType.cs" />
-    <Compile Include="Cards\Properties\Types\CardType.cs" />
     <Compile Include="Cards\Properties\Color.cs" />
+    <Compile Include="Cards\Properties\Types\CardType.cs" />
+    <Compile Include="Cards\Properties\Types\CoreType.cs" />
+    <Compile Include="Cards\Properties\Types\SuperType.cs" />
     <Compile Include="Editions\CardEdition.cs" />
     <Compile Include="Storages\Adapters\CardDataAdapter.cs" />
     <Compile Include="Storages\Adapters\ICardDataAdapter.cs" />

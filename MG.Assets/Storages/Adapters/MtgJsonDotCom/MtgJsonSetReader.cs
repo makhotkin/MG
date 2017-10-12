@@ -7,6 +7,7 @@ using System.IO;
 using Newtonsoft.Json;
 using MG.Assets.Cards.Properties;
 using MG.Assets.Cards.Properties.ManaCosts;
+using MG.Assets.Cards.Properties.Types;
 
 namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 {
@@ -61,13 +62,16 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 				rules.ColorIdentity = parseColorIdentity(jt.Values<string>());
 			if (rules.SplitType == SplitType.None)
 				rules.MainFace = ReadCardFace(name, c);
-
+			else if (rules.SplitType == SplitType.DoubleFaced)
+			{
+				throw new NotImplementedException("Reading 2-faced cards");
+			}
 			else
 				throw new NotImplementedException("Reading split cards");
 			return rules;
 		}
 
-		private static readonly string[] rulesSeparators = new string[] { "\\n" };
+		private static readonly string[] rulesSeparators = new string[] { "\n" };
 		private static readonly string[] emptyArray = new string[] { };
 		private static ICardFace ReadCardFace(string name, JObject c)
 		{
@@ -76,9 +80,41 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 				rules = jText.Value<string>().Split(rulesSeparators, StringSplitOptions.None);
 			CardFace face = new CardFace(name, rules);
 
-			if (c.TryGetValue("manaCost", out JToken jManaCost))
-				face.ManaCost = ManaCost.Parse(jManaCost.Value<string>());
+			if (c.TryGetValue("manaCost", out JToken jManaCost)) face.ManaCost = ManaCost.Parse(jManaCost.Value<string>());
+			if (c.TryGetValue("power", out JToken jPower)) face.Power = jPower.Value<string>();
+			if (c.TryGetValue("toughness", out JToken jToughness)) face.Toughness = jToughness.Value<string>();
+			if (c.TryGetValue("loyalty", out JToken jLoyalty)) face.Loyalty = jLoyalty.Value<string>();
+
+			face.Type = ReadCardType(c);
+
+			Color color = Color.Colorless;
+			if (c.TryGetValue("colors", out JToken jColor))
+				foreach (var v in jColor.Values<string>())
+					if (Enum.TryParse(v, true, out Color c0))
+						color |= c0;
+			face.Color = color;
+
 			return face;
+		}
+
+		private static CardType ReadCardType(JObject c)
+		{
+			SuperType st = 0;
+			if (c.TryGetValue("supertypes", out JToken jSuper))
+				foreach (var v in jSuper.Values<string>())
+					if (Enum.TryParse(v, true, out SuperType sup))
+						st |= sup;
+			CoreType ct = 0;
+			if (c.TryGetValue("types", out JToken jCore))
+				foreach (var v in jCore.Values<string>())
+					if (Enum.TryParse(v, true, out CoreType t))
+						ct |= t;
+
+			IEnumerable<string> subTypes = null;
+			if (c.TryGetValue("subtypes", out JToken jSub))
+				subTypes = jSub.Values<string>();
+
+			return new CardType(ct, st, subTypes);
 		}
 
 		private static Color parseColorIdentity(IEnumerable<string> identity)
@@ -101,8 +137,10 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 
 		private static SplitType parseSplitType(string layout)
 		{
-			if (String.Equals(layout, "normal"))
+			if ("normal".Equals(layout))
 				return SplitType.None;
+			if ("double-faced".Equals(layout))
+				return SplitType.DoubleFaced;
 			throw new NotImplementedException("Parse split cards layout");
 		}
 
