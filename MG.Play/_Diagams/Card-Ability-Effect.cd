@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MG.Play.Model.CardTypes.CardFullType">
+    <Position X="14.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAggAAQAAABAAAAA=</HashCode>
+      <FileName>Model\CardTypes\CardFullType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MG.Play.InGame.Card.ICard">
+    <Position X="9" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAIAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\Card\ICard.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PaperCard" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Abilities" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="MG.Play.InGame.IPermanent">
+    <Position X="6.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\IPermanent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Play.Inventory.IPaperCard">
+    <Position X="11.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAQgAAAAAAAAAAAAQAIAAAA=</HashCode>
+      <FileName>Inventory\IPaperCard.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Edition" />
+      <Property Name="Rules" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MG.Play.InGame.ISpell">
+    <Position X="6.25" Y="3.75" Width="1.5" />
+    <AssociationLine Name="Effects" Type="MG.Play.InGame.Effects.IEffect" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.25" Y="4.307" />
+        <Point X="5.672" Y="4.307" />
+        <Point X="5.672" Y="5.312" />
+        <Point X="4.75" Y="5.312" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\ISpell.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Effects" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Abilities.IAbility">
+    <Position X="9" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\Abilities\IAbility.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Play.Model.CardRules">
+    <Position X="11.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAQgAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CardRules.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MainFace" />
+      <Property Name="AltFace" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MG.Play.Model.ICardFace">
+    <Position X="14.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAgAAAAAA=</HashCode>
+      <FileName>Model\ICardFace.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Type" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="MG.Play.Model.Editions.ICardEdition">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAgAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Model\Editions\ICardEdition.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Abilities.ITriggeredAbility">
+    <Position X="6.25" Y="8.5" Width="1.5" />
+    <InheritanceLine Type="MG.Play.InGame.Abilities.IAbility" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9" Y="7.625" />
+        <Point X="8.505" Y="7.625" />
+        <Point X="8.505" Y="8.964" />
+        <Point X="7.75" Y="8.964" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Effects" Type="MG.Play.InGame.Effects.IEffect" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.25" Y="8.655" />
+        <Point X="5.972" Y="8.655" />
+        <Point X="5.972" Y="8.176" />
+        <Point X="5.66" Y="8.176" />
+        <Point X="5.66" Y="5.875" />
+        <Point X="4.75" Y="5.875" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\Abilities\ITriggeredAbility.cs</FileName>
+      <NewMemberFileName>InGame\Abilities\IActivatedAbility.cs</NewMemberFileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Effects" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Abilities.IStaticAbility">
+    <Position X="6.25" Y="7" Width="1.5" />
+    <InheritanceLine Type="MG.Play.InGame.Abilities.IAbility" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9" Y="7.438" />
+        <Point X="8.794" Y="7.438" />
+        <Point X="8.794" Y="7.438" />
+        <Point X="7.75" Y="7.438" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Effects" Type="MG.Play.InGame.Effects.IContinuousEffect" FixedFromPoint="true">
+      <Path>
+        <Point X="6.25" Y="7.375" />
+        <Point X="5.743" Y="7.375" Type="JumpStart" />
+        <Point X="5.577" Y="7.375" Type="JumpEnd" />
+        <Point X="4.75" Y="7.375" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\Abilities\IStaticAbility.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Effects" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Abilities.IActivatedAbility">
+    <Position X="6.25" Y="5.25" Width="1.5" />
+    <InheritanceLine Type="MG.Play.InGame.Abilities.IAbility" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="9" Y="7.25" />
+        <Point X="8.5" Y="7.25" />
+        <Point X="8.5" Y="5.963" />
+        <Point X="7.75" Y="5.963" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Effects" Type="MG.Play.InGame.Effects.IEffect" FixedToPoint="true">
+      <Path>
+        <Point X="6.25" Y="5.625" />
+        <Point X="4.75" Y="5.625" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>InGame\Abilities\IActivatedAbility.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Effects" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Effects.IEffect">
+    <Position X="3.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\Effects\IEffect.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Effects.IContinuousEffect">
+    <Position X="3.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\Effects\IContinuousEffect.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Effects.IOneShotEffect" Collapsed="true">
+    <Position X="3.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\Effects\IOneShotEffect.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Events.IEventPredicate">
+    <Position X="6.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\Events\IEventPredicate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Events.IEvent">
+    <Position X="9" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\Events\IEvent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Effects.IReplacementEffect">
+    <Position X="2.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>InGame\Effects\IReplacementEffect.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Play.InGame.State.IGameState">
+    <Position X="9" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\State\IGameState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Effects.IPreventionEffect">
+    <Position X="4.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\Effects\IPreventionEffect.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Events.IEventToApply">
+    <Position X="11.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\Events\IEventToApply.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MG.Play.InGame.Events.IEventNotification">
+    <Position X="11.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InGame\Events\IEventNotification.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
