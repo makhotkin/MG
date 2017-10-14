@@ -6,7 +6,7 @@ using System.Linq;
 using MG.Assets.Editions;
 using MG.Assets.Cards.Properties;
 
-namespace MG.Assets.Tests
+namespace MG.Assets.Tests.Storages.Adapters.MtgJsonDotCom
 {
 	[TestClass]
 	public class MtgJsonReaderTest_Innistrad : MtgJsonReaderTestBase
@@ -50,7 +50,7 @@ namespace MG.Assets.Tests
 
 			Assert.AreEqual("Cloistered Youth", face.Name);
 			Assert.AreEqual("1W", face.ManaCost.ToString());
-			Assert.AreEqual("Creature — Human", face.Type.ToString());
+			Assert.AreEqual("Creature — Human", face.TypeLine);
 			Assert.AreEqual("1", face.Power);
 			Assert.AreEqual("1", face.Toughness);
 			Assert.IsNull(face.Loyalty);
@@ -60,7 +60,7 @@ namespace MG.Assets.Tests
 
 			Assert.AreEqual("Unholy Fiend", nightFace.Name);
 			Assert.IsTrue(nightFace.ManaCost.HasNoCost);
-			Assert.AreEqual("Creature — Horror", nightFace.Type.ToString());
+			Assert.AreEqual("Creature — Horror", nightFace.TypeLine);
 			Assert.AreEqual("3", nightFace.Power);
 			Assert.AreEqual("3", nightFace.Toughness);
 			Assert.IsNull(nightFace.Loyalty);
@@ -87,7 +87,7 @@ namespace MG.Assets.Tests
 
 			Assert.AreEqual("Garruk Relentless", face.Name);
 			Assert.AreEqual("3G", face.ManaCost.ToString());
-			Assert.AreEqual("Legendary Planeswalker — Garruk", face.Type.ToString());
+			Assert.AreEqual("Legendary Planeswalker — Garruk", face.TypeLine);
 			Assert.IsNull(face.Power);
 			Assert.IsNull(face.Toughness);
 			Assert.AreEqual("3", face.Loyalty);
@@ -97,7 +97,7 @@ namespace MG.Assets.Tests
 
 			Assert.AreEqual("Garruk, the Veil-Cursed", nightFace.Name);
 			Assert.IsTrue(nightFace.ManaCost.HasNoCost);
-			Assert.AreEqual("Legendary Planeswalker — Garruk", nightFace.Type.ToString());
+			Assert.AreEqual("Legendary Planeswalker — Garruk", nightFace.TypeLine);
 			Assert.IsNull(nightFace.Power);
 			Assert.IsNull(nightFace.Toughness);
 			Assert.IsNull(nightFace.Loyalty);

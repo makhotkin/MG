@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Configuration;
-using MG.Assets.Database;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MG.Assets.Cards.Properties;
+using MG.Assets.Storages;
 using System.Linq;
+
 
 namespace MG.Assets.Tests.Storages
 {
@@ -39,7 +38,7 @@ namespace MG.Assets.Tests.Storages
 			Assert.AreEqual("ZEN", c.Edition.Code);
 			Assert.AreEqual(CardRarity.Common, c.Rarity);
 			Assert.AreEqual("4G", c.Rules.MainFace.ManaCost.ToString());
-			Assert.AreEqual("Creature — Elemental", c.Rules.MainFace.Type.ToString());
+			Assert.AreEqual("Creature — Elemental", c.Rules.MainFace.TypeLine);
 		}
 
 		[TestMethod]
@@ -50,7 +49,7 @@ namespace MG.Assets.Tests.Storages
 			Assert.AreEqual("WWK", c.Edition.Code);
 			Assert.AreEqual(CardRarity.Common, c.Rarity);
 			Assert.AreEqual("2RR", c.Rules.MainFace.ManaCost.ToString());
-			Assert.AreEqual("Sorcery", c.Rules.MainFace.Type.ToString());
+			Assert.AreEqual("Sorcery", c.Rules.MainFace.TypeLine);
 		}
 	}
 }

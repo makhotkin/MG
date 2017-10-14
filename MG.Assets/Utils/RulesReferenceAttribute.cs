@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MG.Assets.Utils
 {
 	// This is to mark references to Comprehensive rules in an uniform way
-	[System.AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = true)]
+	[System.AttributeUsage(AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Interface, Inherited = false, AllowMultiple = true)]
 	public sealed class RulesReferenceAttribute : Attribute
 	{
 		// See the attribute guidelines at 

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace MG.Assets.Database
+namespace MG.Assets.Storages
 {
 	public class CardDatabase : ICardDatabase
 	{

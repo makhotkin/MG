@@ -3,6 +3,7 @@ using MG.Assets.Cards.Properties.ManaCosts;
 using MG.Assets.Cards.Properties.Types;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MG.Assets.Cards
@@ -18,7 +19,15 @@ namespace MG.Assets.Cards
 
 		private readonly string name;
 		public string Name => name;
-		public CardType Type { get; set; }
+
+		public CardType CardType { get; set; }
+		public SuperType SuperType { get; set; }
+		public SubType SubType { get; set; }
+
+		public string TypesBeforeDash => SuperType == 0 ? CardType.TypeToString() : SuperType.TypeToString() + " " + CardType.TypeToString();
+
+		public string TypeLine => SubType.Any() ? String.Format("{0} — {1}", TypesBeforeDash, String.Join(" ", SubType)) : TypesBeforeDash;
+
 		public Color Color { get; set; }
 		public ManaCost ManaCost { get; set; }
 
@@ -34,7 +43,7 @@ namespace MG.Assets.Cards
 			StringBuilder res = new StringBuilder(name);
 			if (!ManaCost.HasNoCost)
 				res.Append(" | ").Append(ManaCost.ToString());
-			res.Append(" | ").Append(Type.ToString());
+			res.Append(" | ").Append(TypeLine);
 			if (Power != null && Toughness != null)
 				res.Append(" | ").Append(Power.ToString()).Append("/").Append(Toughness.ToString());
 			if (Loyalty != null)

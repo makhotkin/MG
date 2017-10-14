@@ -6,7 +6,7 @@ using System.Linq;
 using MG.Assets.Editions;
 using MG.Assets.Cards.Properties;
 
-namespace MG.Assets.Tests
+namespace MG.Assets.Tests.Storages.Adapters.MtgJsonDotCom
 {
 	[TestClass]
 	public class MtgJsonReaderTest_M10 : MtgJsonReaderTestBase
@@ -49,7 +49,7 @@ namespace MG.Assets.Tests
 
 			Assert.AreEqual("Ajani Goldmane", face.Name);
 			Assert.AreEqual("2WW", face.ManaCost.ToString());
-			Assert.AreEqual("Legendary Planeswalker — Ajani", face.Type.ToString());
+			Assert.AreEqual("Legendary Planeswalker — Ajani", face.TypeLine);
 			Assert.IsNull(face.Power);
 			Assert.IsNull(face.Toughness);
 			Assert.AreEqual("4", face.Loyalty);
@@ -74,7 +74,7 @@ namespace MG.Assets.Tests
 
 			Assert.AreEqual("Rod of Ruin", face.Name);
 			Assert.AreEqual("4", face.ManaCost.ToString());
-			Assert.AreEqual("Artifact", face.Type.ToString());
+			Assert.AreEqual("Artifact", face.TypeLine);
 			Assert.IsNull(face.Power);
 			Assert.IsNull(face.Toughness);
 			Assert.IsNull(face.Loyalty);
@@ -100,7 +100,7 @@ namespace MG.Assets.Tests
 
 			Assert.AreEqual("Protean Hydra", face.Name);
 			Assert.AreEqual("XG", face.ManaCost.ToString());
-			Assert.AreEqual("Creature — Hydra", face.Type.ToString());
+			Assert.AreEqual("Creature — Hydra", face.TypeLine);
 			Assert.AreEqual("0", face.Power);
 			Assert.AreEqual("0", face.Toughness);
 			Assert.IsNull(face.Loyalty);

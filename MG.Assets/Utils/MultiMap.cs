@@ -28,5 +28,4 @@ namespace MG.Assets.Utils
 				return Values.SelectMany(a => a);
 		} }
 	}
-
 }

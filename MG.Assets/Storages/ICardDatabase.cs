@@ -2,7 +2,7 @@
 using MG.Assets.Editions;
 using System.Collections.Generic;
 
-namespace MG.Assets.Database
+namespace MG.Assets.Storages
 {
 	public interface ICardDatabase
 	{

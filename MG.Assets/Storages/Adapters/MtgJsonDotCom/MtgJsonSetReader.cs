@@ -99,7 +99,7 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 			if (c.TryGetValue("toughness", out JToken jToughness)) face.Toughness = jToughness.Value<string>();
 			if (c.TryGetValue("loyalty", out JToken jLoyalty)) face.Loyalty = jLoyalty.Value<string>();
 
-			face.Type = ReadCardType(c);
+			(face.SuperType, face.CardType, face.SubType) = ReadCardType(c);
 
 			Color color = Color.Colorless;
 			if (c.TryGetValue("colors", out JToken jColor))
@@ -111,24 +111,24 @@ namespace MG.Assets.Storages.Adapters.MtgJsonDotCom
 			return face;
 		}
 
-		private static CardType ReadCardType(JObject c)
+		private static (SuperType, CardType, SubType) ReadCardType(JObject c)
 		{
 			SuperType st = 0;
 			if (c.TryGetValue("supertypes", out JToken jSuper))
 				foreach (var v in jSuper.Values<string>())
 					if (Enum.TryParse(v, true, out SuperType sup))
 						st |= sup;
-			CoreType ct = 0;
+			CardType ct = 0;
 			if (c.TryGetValue("types", out JToken jCore))
 				foreach (var v in jCore.Values<string>())
-					if (Enum.TryParse(v, true, out CoreType t))
+					if (Enum.TryParse(v, true, out CardType t))
 						ct |= t;
 
-			IEnumerable<string> subTypes = null;
+			IEnumerable<string> subTypes = Enumerable.Empty<string>();
 			if (c.TryGetValue("subtypes", out JToken jSub))
 				subTypes = jSub.Values<string>();
 
-			return new CardType(ct, st, subTypes);
+			return (st, ct, new SubType(subTypes));
 		}
 
 		private static Color parseColorIdentity(IEnumerable<string> identity)

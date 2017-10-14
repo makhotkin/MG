@@ -9,7 +9,10 @@ namespace MG.Assets.Cards
 {
 	public interface ICardFace
 	{
-		CardType Type { get; }
+		CardType CardType { get; }
+		SuperType SuperType { get; }
+		SubType SubType { get; }
+		string TypeLine { get; }
 		Color Color { get; }
 		string Name { get; }
 		ManaCost ManaCost { get; }

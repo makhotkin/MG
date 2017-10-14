@@ -1,4 +1,4 @@
-﻿using MG.Assets.Database;
+﻿using MG.Assets.Storages;
 using System.Collections.Generic;
 
 namespace MG.Assets.Decks.Serialization

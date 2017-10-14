@@ -3,7 +3,7 @@
 namespace MG.Assets.Decks
 {
 	[Flags]
-	public enum GameFormat : short
+	public enum GameFormat : ushort
 	{
 		Constructed = 0x1000,
 		Limited = 0x2000,
@@ -12,6 +12,7 @@ namespace MG.Assets.Decks
 		Archenemy = 0x5000,
 		Vanguard = 0x6000,
 		Planechase = 0x7000,
+		Conspiracy = 0x8000,
 
 
 		Standard = 0x1,

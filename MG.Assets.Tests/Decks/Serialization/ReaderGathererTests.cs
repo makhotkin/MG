@@ -38,9 +38,9 @@ namespace MG.Assets.Tests.Decks.Serialization
 			var main = deck[DeckSection.Main].ToArray();
 			Assert.AreEqual(41, main.Length);
 			Assert.AreEqual(40, main.Count(c => c.Rules.ColorIdentity == Color.Red || c.Rules.ColorIdentity == Color.White));
-			Assert.AreEqual(13, main.Count(c => c.Rules.MainFace.Type.Type == CoreType.Creature));
-			Assert.AreEqual(5, main.Count(c => c.Rules.MainFace.Type.Type == CoreType.Instant));
-			Assert.AreEqual(18, main.Count(c => c.Rules.MainFace.Type.Type == CoreType.Land));
+			Assert.AreEqual(13, main.Count(c => c.Rules.MainFace.CardType == CardType.Creature));
+			Assert.AreEqual(5, main.Count(c => c.Rules.MainFace.CardType == CardType.Instant));
+			Assert.AreEqual(18, main.Count(c => c.Rules.MainFace.CardType == CardType.Land));
 
 			Assert.AreEqual(2, main.Count(c => c.Rarity == CardRarity.Rare));
 		}

@@ -6,7 +6,8 @@ namespace MG.Assets.Decks
 	public interface IDeck
 	{
 		string Name { get; }
-		IList<IPrintedCard> this[DeckSection s] { get; }
+		IList<IPrintedCard> this[DeckSection section] { get; }
+		bool HasSection(DeckSection section);
 		IEnumerable<DeckSection> Sections { get; }
 	}
 }

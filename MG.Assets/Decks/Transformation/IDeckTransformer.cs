@@ -1,5 +1,5 @@
-﻿using MG.Assets.Database;
-using MG.Assets.Editions;
+﻿using MG.Assets.Editions;
+using MG.Assets.Storages;
 using System.Linq;
 
 namespace MG.Assets.Decks.Transformation

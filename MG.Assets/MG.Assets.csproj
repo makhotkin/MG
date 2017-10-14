@@ -54,7 +54,8 @@
     <Compile Include="Cards\Properties\CardRarity.cs" />
     <Compile Include="Cards\Properties\Color.cs" />
     <Compile Include="Cards\Properties\Types\CardType.cs" />
-    <Compile Include="Cards\Properties\Types\CoreType.cs" />
+    <Compile Include="Cards\Properties\Types\CardTypeExtensions.cs" />
+    <Compile Include="Cards\Properties\Types\SubType.cs" />
     <Compile Include="Cards\Properties\Types\SuperType.cs" />
     <Compile Include="Decks\Serialization\DeckReaderBase.cs" />
     <Compile Include="Decks\Serialization\DeckReaderGatherer.cs" />
