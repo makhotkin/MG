@@ -1,20 +1,20 @@
-﻿using MG.Play.Events;
+﻿using MG.Assets.Decks;
+using MG.Play.Events;
 using MG.Play.Players;
 using MG.Play.Turns;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MG.Play.Games
 {
 	public interface IGame
 	{
+		GameFormat Format { get; }
 		TurnTime CurrentTime { get; }
-		IEnumerable<Player> Players { get; }
+		IEnumerable<IPlayer> Players { get; }
 
 
 		IEnumerable<IEventNotification> ApplyEvent(IEventToApply @event);
+		Task<GameOutcome> Start();
 	}
 }

@@ -24,5 +24,10 @@ namespace MG.Play.Turns
 			return new TurnTime() { TimeStamp = ts };
 		}
 
+
+		public void Advance()
+		{
+			Tick++;
+		}
 	}
 }

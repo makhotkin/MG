@@ -2,12 +2,11 @@
 using MG.Assets.Decks;
 using MG.Assets.Utils;
 using MG.Play.Cards;
+using MG.Play.Objects;
+using MG.Play.Players.Controllers;
 using MG.Play.Zones;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MG.Play.Players
 {
@@ -16,13 +15,15 @@ namespace MG.Play.Players
 		private PlayerId id;
 		private string name;
 
-		MultiMap<ZoneType, ICard> zones = new MultiMap<ZoneType, ICard>();
+		MultiMap<ZoneType, IGameObject> zones = new MultiMap<ZoneType, IGameObject>();
+		public IList<IGameObject> GetZone(ZoneType zone) => zones[zone];
 
-		public PlayerId Id => id;
+		public IPlayerController Controller => throw new NotImplementedException();
+		private IPlayerController controller;
 
-		public Player(PlayerId id, string name)
+		public Player(IPlayerController controller, string name)
 		{
-			this.id = id;
+			this.controller = controller;
 			this.name = name;
 		}
 
@@ -30,15 +31,13 @@ namespace MG.Play.Players
 		internal void DeckBecomesLibrary(IDeck deck, Func<IPrintedCard, IPlayer, ICard> fnMaterializeCard)
 		{
 			foreach(var cp in deck[DeckSection.Main])
-			{
 				zones.Add(ZoneType.Library, fnMaterializeCard(cp, this));
-			}
 
-			var sCom = deck[DeckSection.Commander];
-			if (sCom != null)
-			{
+			foreach(var cp in deck[DeckSection.SideBoard])
+				zones.Add(ZoneType.Sideboard, fnMaterializeCard(cp, this));
+
+			if (deck.HasSection(DeckSection.Commander))
 				throw new NotImplementedException("103.1b In a Commander game, each player puts his or her commander from his or her deck face up into the command zone before shuffling. See rule 903.6.");
-			}
 		}
 
 		internal void ShuffleLibrary()

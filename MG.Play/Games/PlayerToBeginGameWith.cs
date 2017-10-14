@@ -1,11 +1,11 @@
 ﻿using MG.Assets.Decks;
-using MG.Play.Players;
+using MG.Play.Players.Controllers;
 
 namespace MG.Play.Games
 {
 	public class PlayerToBeginGameWith
 	{
-		public PlayerId Id;
+		public IPlayerController Controller;
 		public string Name;
 		public IDeck Deck;
 	}

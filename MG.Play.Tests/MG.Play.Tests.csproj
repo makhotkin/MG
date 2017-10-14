@@ -65,7 +65,7 @@
       <Project>{2fc01d79-8c9c-4705-9be2-248091071476}</Project>
       <Name>MG.Assets</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MG.Game\MG.Play.csproj">
+    <ProjectReference Include="..\MG.Play\MG.Play.csproj">
       <Project>{02cc11e0-d6b6-45bd-877e-d8d23fa6fa7d}</Project>
       <Name>MG.Play</Name>
     </ProjectReference>

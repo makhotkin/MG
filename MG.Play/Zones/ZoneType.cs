@@ -14,6 +14,7 @@ namespace MG.Play.Zones
 		Battlefield,
 		Exile,
 		Library,
+		Sideboard,
 		Command,
 
 		NonExistance, // this where tokens come to and from

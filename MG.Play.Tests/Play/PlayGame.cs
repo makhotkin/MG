@@ -4,6 +4,7 @@ using MG.Play.Games;
 using MG.Assets.Decks;
 using MG.Assets.Decks.Serialization;
 using MG.Assets.Tests.Storages;
+using MG.Play.Players.Controllers;
 
 namespace MG.Play.Tests.Play
 {
@@ -13,21 +14,25 @@ namespace MG.Play.Tests.Play
 		private static IDeckReader dr = new DeckReaderGatherer(StaticData.CardDbBlockM10);
 
 		[TestMethod]
-		public void PlayersWantToPlay()
+		public async void PlayersWantToPlay()
 		{
 			GameToBeStarted gameToStart = new GameToBeStarted();
 			gameToStart.Format = GameFormat.Standard | GameFormat.Constructed;
 			gameToStart.RuleChanges = null;
 
-			var alice = new PlayerToBeginGameWith() { Id = 1, Name = "Alice" };
+			var ca = new PlayerControllerScripted();
+			var alice = new PlayerToBeginGameWith() { Controller = ca, Name = "Alice" };
 			alice.Deck = parseDeck("12 Plains", "5 Silvercoat Lion", "3 Siege Mastodon");
 			gameToStart.Players.Add(alice);
 
-			var bob = new PlayerToBeginGameWith() { Id = 2, Name = "Bob" };
+			var cb = new PlayerControllerScripted();
+			var bob = new PlayerToBeginGameWith() { Controller = cb, Name = "Bob" };
 			bob.Deck = parseDeck("12 Forest", "6 Runeclaw Bear", "2 Enormous Baloth");
 			gameToStart.Players.Add(bob);
 
-			Games.Game game = new Games.Game(gameToStart);
+			var game = new Game(gameToStart);
+
+			var result = await game.Start();
 		}
 
 		private static IDeck parseDeck(params string[] cards)
